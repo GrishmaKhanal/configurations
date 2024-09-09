@@ -70,6 +70,21 @@ vscode
 ```
 Chrome
 Vesktop
+Mission Center
+Flatseal
+Prism Launcher
+qBittorrent
+```
+
+```
+flatpak install com.google.Chrome dev.vencord.Vesktop io.missioncenter.MissionCenter com.github.tchx84.Flatseal org.prismlauncher.PrismLauncher org.qbittorrent.qBittorrent
+```
+
+If on Gnome:
+
+```
+sudo dnf install gnome-tweaks
+flatpak install com.mattjakeman.ExtensionManager
 ```
 
 

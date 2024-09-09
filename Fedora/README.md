@@ -143,3 +143,27 @@ chsh -s $(which zsh)
 ```
 
 reboot
+
+
+
+# or run the script
+
+Before running the script check the repolist
+
+```
+cd /etc/yum.repos.d/
+ls -l
+```
+
+```
+cd ~
+mkdir Workspace
+cd Workspace
+git clone https://github.com/GrishmaKhanal/Different-Config.git
+```
+
+```
+cd Different-Config/Fedora
+cp setup-fedora.sh ../../../
+chmod +x setup-fedora.sh
+```

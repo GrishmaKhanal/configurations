@@ -62,11 +62,6 @@ post_reboot_tasks() {
     cp begin.sh ~/begin.sh
     chmod +x ~/begin.sh
 
-    # Configure Git
-    echo "Configuring Git..."
-    git config --global user.name "GrishmaKhanal"
-    git config --global user.email grishmakhanal48@gmail.com
-
     # Remove flag file after completion
     rm "$FLAG_FILE"
 

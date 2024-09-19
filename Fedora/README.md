@@ -168,4 +168,44 @@ chsh -s $(which zsh)
 reboot
 
 
+# Gnome Shortcuts
 
+Hide all normal windows -> Super+D
+Switch windows -> Alt+Tab
+Show the notification list -> Super+F2
+
+## Custom Shortcuts
+
+Discord
+```
+Discord
+Discord
+Shift+Alt+D
+```
+
+Firefox
+```
+Firefox
+firefox
+Shift+alt+F
+```
+
+Mission Center
+```
+Mission Center
+flatpak run io.missioncenter.MissionCenter
+Super + Escape
+```
+
+Steam
+```
+Steam
+steam
+Shift + Alt + S
+```
+
+Terminal
+```
+gnome-terminal
+Ctrl+Alt+T
+```

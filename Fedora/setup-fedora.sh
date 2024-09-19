@@ -5,7 +5,6 @@ set -e
 
 # Define flag file
 FLAG_FILE="/tmp/setup_done.flag"
-
 # Function for pre-reboot tasks
 pre_reboot_tasks() {
     # Remove unused packages
@@ -61,13 +60,16 @@ post_reboot_tasks() {
     # Final message
     echo "\nThis setup did not install VSCode, and configured zsh"
     echo "Setup complete."
+    read -p "Press Enter to Complete: " 
     rm ~/setup-fedora.sh
 }
 
 # Main logic
 if [ -f "$FLAG_FILE" ]; then
+    read -p "Press Enter to Continue: " 
     echo "Setup already completed or system has been rebooted."
     post_reboot_tasks
 else
+    read -p "Press Enter to Continue to run post reboot tasks: " 
     pre_reboot_tasks
 fi

@@ -13,13 +13,6 @@ pre_reboot_tasks() {
     sudo dnf remove -y libreoffice*
     sudo dnf autoremove -y
 
-    # Configure dnf to be faster
-    echo "Configuring dnf for faster operations..."
-    sudo tee /etc/dnf/dnf.conf <<EOF
-[main]
-max_parallel_downloads=10
-EOF
-
     # System update and reboot
     echo "Updating system..."
     sudo dnf update --refresh -y

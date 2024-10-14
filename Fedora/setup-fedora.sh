@@ -9,14 +9,16 @@ FLAG_FILE="/tmp/setup_done.flag"
 pre_reboot_tasks() {
     # Remove unused packages
     echo "Removing unused packages..."
-    sudo dnf remove -y libreoffice*
+    sudo dnf remove -y libreoffice-core totem rhythmbox simple-scan
     sudo dnf autoremove -y
+    sudo flatpak remote-delete fedora
+    sudo flatpak remote-delete fedora-testing
+    sudo rm /etc/yum.repos.d/_copr:copr.fedorainfracloud.org:phracek:PyCharm.repo /etc/yum.repos.d/google-chrome.repo
 
     # System update and reboot
     echo "Updating system..."
     sudo dnf update --refresh -y
     sudo dnf autoremove -y
-    sudo dnf clean all
 
     # Create flag file and reboot system
     touch "$FLAG_FILE"
@@ -27,8 +29,9 @@ pre_reboot_tasks() {
 # Function for post-reboot tasks
 post_reboot_tasks() {
     # Adding RPM Fusion repos
-    echo "Adding RPM Fusion repositories..."
-    sudo dnf install -y https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+    # Remove the remaining rpm fusion in /etc/yum.repos.d if you go this route ---
+    # sudo rm /etc/yum.repos.d/rpmfusion-nonfree-steam.repo /etc/yum.repos.d/rpmfusion-nonfree-nvidia-driver.repo
+    # sudo dnf install -y https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
 
     # Add Flathub repository
     echo "Adding Flathub repository..."
@@ -36,40 +39,41 @@ post_reboot_tasks() {
 
     # Install software
     echo "Installing software..."
-    sudo dnf install -y akmod-nvidia xorg-x11-drv-nvidia-cuda discord steam vlc lutris
+    sudo dnf install -y akmod-nvidia xorg-x11-drv-nvidia-cuda steam fastfetch gnome-tweaks zsh gh expect lutris
 
     # Install Flatpak applications
     echo "Installing Flatpak applications..."
-    flatpak install -y com.google.Chrome dev.vencord.Vesktop io.missioncenter.MissionCenter com.github.tchx84.Flatseal org.prismlauncher.PrismLauncher org.qbittorrent.qBittorrent
-
-    # Install GNOME Tweaks and Extensions Manager if using GNOME
-    if gnome-shell --version &> /dev/null; then
-        echo "Installing GNOME Tweaks and Extensions Manager..."
-        sudo dnf install -y gnome-tweaks
-        flatpak install -y com.mattjakeman.ExtensionManager
-    fi
+    xargs flatpak install -y < flatpak-files.txt
+    sudo dnf remove firefox -y
 
     # Clone GitHub repository and run setup script
     cd ~/Workspace/Different-Config/Fedora
-    cp begin.sh ~/begin.sh
-    chmod +x ~/begin.sh
+    cp begin.sh ~/
+    cp game.sh ~/
+
+    echo "Loading Custom Keybindings - Gnome"
+    cd Keybindings/
+    dconf load /org/gnome/shell/keybindings/ < bkp_shell
+    dconf load /org/gnome/desktop/wm/keybindings/ < bkp_wm
+    dconf load /org/gnome/settings-daemon/plugins/media-keys/ < bkp_media
+    cd ~
+
+    # Final message & getting oh my zsh
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+    echo "\nThis setup did not install VSCode"
+    echo "Setup complete."
+    read -p "Press Enter to Complete: "
 
     # Remove flag file after completion
     rm "$FLAG_FILE"
-
-    # Final message
-    echo "\nThis setup did not install VSCode, and configured zsh"
-    echo "Setup complete."
-    read -p "Press Enter to Complete: " 
-    rm ~/setup-fedora.sh
 }
 
 # Main logic
 if [ -f "$FLAG_FILE" ]; then
-    read -p "Press Enter to Continue: " 
-    echo "Setup already completed or system has been rebooted."
+    echo "Press Enter to Continue to run post reboot tasks."
+    read -p "Press Enter to Continue: "
     post_reboot_tasks
 else
-    read -p "Press Enter to Continue to run post reboot tasks: " 
+    read -p "Press Enter to Continue to run updates and cleaning: "
     pre_reboot_tasks
 fi

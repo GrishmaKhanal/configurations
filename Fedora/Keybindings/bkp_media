@@ -1,0 +1,42 @@
+[/]
+custom-keybindings=['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom4/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom5/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom6/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom7/']
+
+[custom-keybindings/custom0]
+binding='<Control><Alt>t'
+command='gnome-terminal'
+name='gnome-terminal'
+
+[custom-keybindings/custom1]
+binding='<Shift><Alt>d'
+command='/home/grkf/Documents/Discord/Discord'
+name='Discord'
+
+[custom-keybindings/custom2]
+binding='<Shift><Control>Escape'
+command='flatpak run io.missioncenter.MissionCenter'
+name='Mission Center'
+
+[custom-keybindings/custom3]
+binding='<Shift><Alt>f'
+command='flatpak run org.mozilla.firefox'
+name='Firefox'
+
+[custom-keybindings/custom4]
+binding='<Shift><Control><Alt>s'
+command='./game.sh'
+name='Steam logged'
+
+[custom-keybindings/custom5]
+binding='<Shift><Alt>z'
+command='flatpak run dev.zed.Zed'
+name='Zed'
+
+[custom-keybindings/custom6]
+binding='<Shift><Alt>s'
+command='steam'
+name='Steam'
+
+[custom-keybindings/custom7]
+binding='<Shift><Alt>v'
+command='code'
+name='VSCode'

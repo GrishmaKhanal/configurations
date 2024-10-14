@@ -2,13 +2,6 @@
 
 # run the script
 
-Before running the script check the repolist
-
-```
-cd /etc/yum.repos.d/
-ls -l
-```
-
 ```
 cd ~
 mkdir Workspace
@@ -18,16 +11,25 @@ git clone https://github.com/GrishmaKhanal/Different-Config.git
 
 ```
 cd Different-Config/Fedora
-cp setup-fedora.sh ../../../
-chmod +x setup-fedora.sh
+./setup-fedora.sh
 ```
 
+Put Discord In:
+```
+/home/grkf/Documents/Discord/Discord
+```
 # OR
 # remove unused packages
 
 ```
 sudo dnf remove libreoffice*
 sudo dnf autoremove
+```
+
+Check the repolist
+```
+cd /etc/yum.repos.d/
+ls -l
 ```
 
 # make dnf faster
@@ -40,7 +42,6 @@ Add these lines:
 
 ```
 max_parallel_downloads=10
-fastestmirror=True
 ```
 
 # system update
@@ -48,7 +49,6 @@ fastestmirror=True
 ```
 sudo dnf update --refresh
 ```
-
 reboot
 
 
@@ -69,12 +69,7 @@ sudo dnf install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-releas
 flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 ```
 
-just in case
-```
-sudo dnf config-manager --enable fedora-cisco-openh264
-```
-
-## Installing 
+## Installing
 ```
 sudo dnf install akmod-nvidia
 sudo dnf install xorg-x11-drv-nvidia-cuda
@@ -82,6 +77,7 @@ sudo dnf install xorg-x11-drv-nvidia-cuda
 
 ```
 sudo dnf install discord steam vlc -y
+sudo dnf install expect
 ```
 +
 ```
@@ -92,15 +88,17 @@ vscode
 
 ```
 Chrome
+Firefox
 Vesktop
 Mission Center
 Flatseal
 Prism Launcher
 qBittorrent
+Zed
 ```
 
 ```
-flatpak install com.google.Chrome dev.vencord.Vesktop io.missioncenter.MissionCenter com.github.tchx84.Flatseal org.prismlauncher.PrismLauncher org.qbittorrent.qBittorrent
+flatpak install com.google.Chrome dev.vencord.Vesktop io.missioncenter.MissionCenter com.github.tchx84.Flatseal org.prismlauncher.PrismLauncher org.qbittorrent.qBittorrent dev.zed.Zed org.videolan.VLC org.mozilla.firefox
 ```
 
 If on Gnome:
@@ -131,10 +129,13 @@ mkdir Workspace
 cd Workspace
 git clone https://github.com/GrishmaKhanal/Different-Config.git
 ```
+
+Default Yes:
+Add defaultyes=True to /etc/dnf/dnf.conf
+
 ```
 cd Different-Config/Fedora
 cp begin.sh ../../../
-chmod +x begin.sh
 ```
 
 Add GPU_System_Monitor.page to System Monitor (super + esc)

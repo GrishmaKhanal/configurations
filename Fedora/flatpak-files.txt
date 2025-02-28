@@ -1,10 +1,12 @@
 org.mozilla.firefox
-dev.vencord.Vesktop
 io.missioncenter.MissionCenter
 com.github.tchx84.Flatseal
 org.prismlauncher.PrismLauncher
 org.qbittorrent.qBittorrent
 org.videolan.VLC
-dev.zed.Zed
 com.google.Chrome
 com.mattjakeman.ExtensionManager
+com.heroicgameslauncher.hgl
+org.gimp.GIMP
+app.zen_browser.zen
+com.stremio.Stremio

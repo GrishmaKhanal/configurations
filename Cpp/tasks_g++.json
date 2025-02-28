@@ -8,9 +8,15 @@
                 "-fdiagnostics-color=always",
                 "-g",
                 "-std=c++23",  // Specify the C++ standard version
+                "-pedantic-errors", // unnecessary warnings
+                "-Wall",            //warning level high but not all
+                "-Weffc++",         // ""
+                "-Wextra",          // ""
+                "-Wconversion",     // ""
+                "-Wsign-conversion", // ""  // "-Werror", // treats all warning as error
                 "${file}",
                 "-o",
-                "${fileDirname}/compiledBinary/${fileBasenameNoExtension}" // Specify the output location
+                "${fileDirname}/compiledBinary/${fileBasenameNoExtension}"
             ],
             "options": {
                 "cwd": "${fileDirname}"

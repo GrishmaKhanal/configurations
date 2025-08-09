@@ -1,3 +1,4 @@
 [submodule "archlinux"]
 	path = archlinux
 	url = https://github.com/ecabott/linux-install.git
+	branch = main

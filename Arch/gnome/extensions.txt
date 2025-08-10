@@ -1,0 +1,2 @@
+gnome-shell-extension-appindicator
+gnome-shell-extension-vitals

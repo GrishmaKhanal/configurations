@@ -1,0 +1,13 @@
+com.mattjakeman.ExtensionManager
+app.zen_browser.zen
+com.discordapp.Discord
+com.google.Chrome
+com.stremio.Stremio
+dev.zed.Zed
+io.dbeaver.DBeaverCommunity
+io.github.realmazharhussain.GdmSettings
+org.prismlauncher.PrismLauncher
+org.mozilla.firefox
+org.mozilla.Thunderbird
+org.libreoffice.LibreOffice
+com.spotify.Client

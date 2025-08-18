@@ -41,4 +41,10 @@ Yet Another Yogurt - An AUR Helper Written in Go
 sudo pacman -S --needed git base-devel && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si
 ```
 
+### zsh alias
+```
+cat zsh_alias.txt << ~/.zshrc
+```
+
+
 *This is a personalized version from /archlinux/archlinux/\**

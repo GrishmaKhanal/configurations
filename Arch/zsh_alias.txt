@@ -1,0 +1,10 @@
+no_write() {
+ "$@" >/dev/null 2>&1 & disown
+}
+# dkms status | load module
+alias load-droidcam='sudo modprobe v4l2loopback devices=1 video_nr=10 card_label="DroidCam" exclusive_caps=1'
+
+pycharm() {
+  no_write pycharm1 "$@"
+}
+alias yf='yay && echo "\n------\nFlatpak Updates\n------\n" && flatpak update'
